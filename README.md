@@ -19,5 +19,7 @@ https://aimk12.tistory.com/category/%EB%B0%B1%EC%A4%80%20%EC%BD%94%EB%94%A9
 
 7. 그리드 알고리즘
 
+(1931번, 11399번)
+
 8. 브루트 포스
 
