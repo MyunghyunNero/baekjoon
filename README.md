@@ -9,6 +9,8 @@ https://aimk12.tistory.com/category/%EB%B0%B1%EC%A4%80%20%EC%BD%94%EB%94%A9
 
 2. 다이나믹 프로그래밍
 
+(11053번 ,11054번)
+
 3. 수학
 
 (10610번)
