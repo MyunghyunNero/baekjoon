@@ -27,3 +27,6 @@ https://aimk12.tistory.com/category/%EB%B0%B1%EC%A4%80%20%EC%BD%94%EB%94%A9
 
 8. 브루트 포스
 
+9. 분할 정복
+
+(11728번)
