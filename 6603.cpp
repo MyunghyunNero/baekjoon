@@ -31,7 +31,7 @@ int main(){
             ans.push_back(cur);
         }while(next_permutation(d.begin(),d.end()));      //다음 순열
         sort(ans.begin(),ans.end());          //정렬
-        for(auto &v :ans){
+        for(auto &v :ans){                      //출력
             for(int i=0;i<v.size();i++){
                 cout <<v[i]<<' ';
             }
