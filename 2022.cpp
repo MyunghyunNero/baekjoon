@@ -16,7 +16,7 @@ int main(){
         double h=(h1*h2)/(h1+h2);          //구해야하는 높이
         if(h>c){
             left=mid;
-        }
+        } 
         else{
             right=mid;
         }
