@@ -18,7 +18,7 @@ int main(){
             save.erase(s);
         }
     }
-    for (auto iter = save.rbegin(); iter != save.rend(); iter++) {
+    for (set<string>::reverse_iterator iter = save.rbegin(); iter != save.rend(); iter++) {    //역방향 반복자
 	    cout << *iter << "\n";
     }
 
