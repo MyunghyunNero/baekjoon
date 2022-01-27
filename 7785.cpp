@@ -15,7 +15,7 @@ int main(){
             save.insert(s);
         }
         if(ch=="leave"){
-            save.erase(s);
+            save.erase(s); 
         }
     }
     for (set<string>::reverse_iterator iter = save.rbegin(); iter != save.rend(); iter++) {    //역방향 반복자
