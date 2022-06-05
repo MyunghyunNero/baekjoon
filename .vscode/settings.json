@@ -4,6 +4,7 @@
         "vector": "cpp",
         "algorithm": "cpp",
         "stack": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "set": "cpp"
     }
 }
