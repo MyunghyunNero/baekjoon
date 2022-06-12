@@ -5,6 +5,7 @@
         "algorithm": "cpp",
         "stack": "cpp",
         "xstring": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "iostream": "cpp"
     }
 }
