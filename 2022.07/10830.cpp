@@ -1,55 +1,68 @@
 #include <iostream>
 using namespace std;
-
-long long n, b;
-int arr[5][5];
-int result[5][5];
-int temp[5][5];
-
-void solved(int v1[5][5], int v2[5][5]) {
-	
-
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++) {
-			temp[i][j] = 0;
-			for (int k = 0; k < n; k++)
-				temp[i][j] += (v1[i][k] * v2[k][j]);
-			temp[i][j] %= 1000;
-		}
-
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++) 
-			v1[i][j] = temp[i][j];
-		
-			
+#define mod 1000
+long long n,m;
+long long matrix[6][6];
+long long temp[6][6];
+long long ans[6][6];
+void divide(long long x){
+    if(x==1){
+        for(int i=0;i<n;i++){
+            for(int k=0;k<n;k++){
+                ans[i][k]=temp[i][k]%1000;
+        }
+    }
+        return;
+    }
+    if(x%2==1){
+        divide(x-1);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                ans[i][j]=0;
+                for(int t=0;t<n;t++){
+                    ans[i][j]+=temp[i][t]*matrix[t][j];              //홀수 이면 기본 행렬 곱해주기
+                    
+                }
+                ans[i][j]%=mod;
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int k=0;k<n;k++){
+                temp[i][k]=ans[i][k];                             //결과값 저장
+        }
+    }
+        return;
+    }
+    divide(x/2);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            ans[i][j]=0;
+            for(int t=0;t<n;t++){
+                ans[i][j]+=temp[i][t]*temp[t][j];                       //짝수이면 거듭곱 행렬 곱하기
+            }
+            ans[i][j]%=mod;
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int k=0;k<n;k++){
+            temp[i][k]=ans[i][k];
+        }
+    }
+    
 }
-int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0), cout.tie(0);
-
-	cin >> n >> b;
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			cin >> arr[i][j];
-		}
-		result[i][i] = 1;
-	}
-	while (b) {
-		if (b % 2 == 1) {
-			solved(result, arr);
-		}
-		solved(arr, arr);
-		b /= 2;
-
-	}
-
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++)
-			cout << result[i][j] << ' ';
-		cout << endl;
-	}
-
-	return 0;
+int main(){
+    cin >>n>>m;
+    for(int i=0;i<n;i++){
+        for(int k=0;k<n;k++){
+            cin>>matrix[i][k];
+            temp[i][k]=matrix[i][k];
+        }
+    }
+    divide(m);
+    for(int i=0;i<n;i++){
+        for(int k=0;k<n;k++){
+            cout <<ans[i][k]<<' ';
+        }
+        cout<<'\n';
+    }
 }
