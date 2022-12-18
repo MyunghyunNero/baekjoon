@@ -59,7 +59,7 @@ int main(){
             if(ans<temp) ans=temp;
             swap(j-1,i,j,i);
         }
-    }
+    } 
     cout<<ans;
 
 }
