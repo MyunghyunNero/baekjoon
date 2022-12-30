@@ -12,13 +12,18 @@ int main(){
         cin>>a;
         v.push_back(a);
     }
+    int index;
     for(int i=0;i<j;i++){
         if(x+m-1<v[i]){
-            x=v[i]-x-m+1;
-            ans+=x;
+            index=v[i]-x-m+1;
+            x=v[i]-m+1;
+            ans+=index;
         }else if(x>v[i]){
+        	index=x-v[i];
             x=v[i];
-            ans+=x-v[i];
+            ans+=index;
+        }else if(x<=v[i]&&x+m-1>=v[i]){
+        	continue;
         }
     }
     cout<<ans;
