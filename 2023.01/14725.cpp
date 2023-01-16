@@ -5,47 +5,51 @@
 #include <map>
 using namespace std;
 
-struct Node{
-	map<string, Node*> child;
-	map<string, Node*>::iterator iter;
-	void insert(vector<string> v, int idx) {
-		if (idx == v.size()) return;
-		string s = v[idx];
-		iter = child.find(s);		//Node
-		if (iter != child.end()) 		//이미 있는 경우
-			iter->second->insert(v, idx + 1);
+struct Trie{
+	map<string, Trie*> child;
+	
+	void insert(vector<string> v, int depth) {
+		if (depth == v.size()) return;
+		string s = v[depth];
+        map<string, Trie*>::iterator iter;
+		iter = child.find(s);		
+		if (iter != child.end()) 		
+			iter->second->insert(v, depth + 1);    //해당 문자열이 있으면 다음 층으로 넘어감    
 		else {
-			Node* n = new Node;
+			Trie* n = new Trie;    //해당 문자열이 없으면 새로운 노드 생성후 연결
 			child.insert({ s,n });
-			n->insert(v, idx + 1);
+			n->insert(v, depth + 1);
 		}
 	}
-	void print(int idx) {
+	void dfs(int depth) {
 		if (child.empty()) return;
-		for (auto it = child.begin(); it != child.end(); it++) {
-			for (int i = 0; i < idx; i++)
+
+		for (auto it = child.begin(); it != child.end(); it++) {  //child는 각 층에 있는 값들 
+			for (int i = 0; i < depth; i++)
 				cout << "--";
 			cout << it->first << '\n';
-			it->second->print(idx + 1);
+			it->second->dfs(depth + 1);
 		}
 	}
 };
-Node tmp;
+
 int main() {
-	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-	int num, val;
-	Node* root = new Node;
+	ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+     cout.tie(NULL);
+	int num, index;
+	Trie* root = new Trie;
 	string s;
 	cin >> num;
 	for (int i = 0; i < num; i++) {
-		cin >> val;
+		cin >> index;
 		vector<string> v;
-		for (int j = 0; j < val; j++) {
+		for (int j = 0; j < index; j++) {
 			cin >> s;
 			v.push_back(s);
 		}
 		root->insert(v, 0);
 	}
-	root->print(0);
+	root->dfs(0);
 	return 0;
 }
