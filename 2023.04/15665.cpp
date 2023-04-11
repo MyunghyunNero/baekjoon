@@ -16,7 +16,7 @@ void dfs(int idx){
     for(auto iter=s.begin();iter!=s.end();iter++){
         v.push_back(*iter);
         dfs(idx+1);
-        v.erase(v.end());
+        v.erase(v.begin()+idx);
     }
 }
 int main(){
