@@ -15,7 +15,7 @@ int findparent(int x){
     if(x==findparent(parent[x])){
         return x;
     }else{
-        return findparent(parent[x]);
+        return parent[x]=findparent(parent[x]);
     }
 }
 void uni(int x,int y){
@@ -55,7 +55,6 @@ void prim(int start){
             }
         }
     }
-
 }
 
 int main(){
