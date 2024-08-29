@@ -18,4 +18,3 @@ int solution(int n) {
     return answer;
 } 
 
-
